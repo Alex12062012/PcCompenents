@@ -38,7 +38,7 @@ PRODUCTS = {
         'rm850': {'name': 'Corsair RM850 850W 80+ Bronze', 'price': 189, 'url': 'https://amazon.fr/dp/B0D9C1DT62'}
     },
     'case': {
-        'default_case': {'name': 'Lian Li Lancool 216 RGB TG (6 ventilos)', 'price': 110, 'url': 'https://www.amazon.fr/dp/B0B469JRGC'}
+        'default_case': {'name': 'Foikin F300 (7ventilateur)', 'price': 75, 'url': 'https://www.amazon.fr/FOIFKIN-Boitier-pr%C3%A9install%C3%A9s-Ventilateur-panoramique/dp/B0DFR66MM5/ref=sr_1_4?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=21X9CIH5OJ41F&dib=eyJ2IjoiMSJ9.CVDVyZiep4KbIs38RGSYIkO7f3ZDs4K0r2sn1xn7MJwN1GSnpU5dF8SDzFmcT5pkcQ-bSK_zjI9rwxcqekNkjE92ZoDyNqeuOTaxbfwCFSEvPAK_T0jDH1l__Fq5Z8h7yQNYYn-Ay_03nIxPGv1u07RMmAbXUpIVF_Ln3tLNWU6ubYVK38bQp7y0yqwzf7Aemayq-qTtvZ23CZa_tNFZ_dgm9cQNVp5GIh2DH0RIhP8.aWloAIDHC-ypL0cel99ReettaoMJlPN8DjL405cRJH8&dib_tag=se&keywords=foikin+aquarium+atx+black&qid=1768690112&s=electronics&sprefix=foikin+quarium+atx+black%2Celectronics%2C246&sr=1-4'}
     },
     'monitor': {
         'aoc24': {'name': 'AOC 24G2U 24" 144Hz IPS', 'price': 154, 'url': 'https://www.electrodepot.fr/moniteur-aoc-27-q27g42ze-qhd-240hz-0-3ms.html'},
