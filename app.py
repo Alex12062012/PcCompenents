@@ -40,7 +40,7 @@ PRODUCTS = {
         'rm850': {'name': 'Corsair RM850 850W 80+ Bronze', 'price': 189, 'url': 'https://amazon.fr/dp/B0D9C1DT62'}
     },
     'case': {
-        'default_case': {'name': 'Lian Li Lancool 216 RGB TG (6 ventilos)', 'price': 110, 'url': 'https://www.amazon.fr/dp/B0B469JRGC'}
+        'default_case': {'name': 'FOIFKIN 300 Boîtier Gaming ATX avec ventilateurs préinstallés', 'price': 75, 'url': 'https://www.amazon.fr/FOIFKIN-Boitier-pr%C3%A9install%C3%A9s-Ventilateur-panoramique/dp/B0DFR66MM5'}
     },
     'monitor': {
         'aoc24': {'name': 'AOC 24G2U 24" 144Hz IPS', 'price': 154, 'url': 'https://www.electrodepot.fr/moniteur-aoc-27-q27g42ze-qhd-240hz-0-3ms.html'},
