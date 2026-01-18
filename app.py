@@ -24,9 +24,11 @@ PRODUCTS = {
         'ddr5_32gb': {'name': '32GB DDR5 6000MHz', 'price': 130, 'url': 'https://www.idealo.fr/cat/3610/memoire-vive.html'}
     },
     'ssd': {
-        'kingston500': {'name': 'Kingston NV2 500GB NVMe', 'price': 1000, 'url': 'https://www.idealo.fr/cat/4605/disques-durs-ssd.html'},
         'samsung1tb': {'name': 'Samsung 980 1TB NVMe', 'price': 209, 'url': 'https://amazon.fr/dp/B08V83JZH4'},
         'samsung2tb': {'name': 'Samsung 990 PRO 2TB NVMe Gen4', 'price': 285, 'url': 'https://www.darty.com/nav/achat/console_jeux/composant/disque_ssd/samsung_ssd_int_990_pro_2to.html'}
+    },
+    'cooling': {
+        'watercooling': {'name': 'Minorsonic High-Speed Ceramic Water Cooling', 'price': 45, 'url': 'https://www.amazon.com/Minorsonic-High-Speed-Ceramic-Performance-Transfer/dp/B0FHW333V3'}
     },
     'mobo': {
         'b550': {'name': 'MSI B550 Gaming Plus', 'price': 115, 'url': 'https://www.amazon.fr/dp/B08B4V6H3N'},
@@ -38,7 +40,7 @@ PRODUCTS = {
         'rm850': {'name': 'Corsair RM850 850W 80+ Bronze', 'price': 189, 'url': 'https://amazon.fr/dp/B0D9C1DT62'}
     },
     'case': {
-        'default_case': {'name': 'Foikin F300 (7ventilateur)', 'price': 75, 'url': 'https://www.amazon.fr/FOIFKIN-Boitier-pr%C3%A9install%C3%A9s-Ventilateur-panoramique/dp/B0DFR66MM5/ref=sr_1_4?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=21X9CIH5OJ41F&dib=eyJ2IjoiMSJ9.CVDVyZiep4KbIs38RGSYIkO7f3ZDs4K0r2sn1xn7MJwN1GSnpU5dF8SDzFmcT5pkcQ-bSK_zjI9rwxcqekNkjE92ZoDyNqeuOTaxbfwCFSEvPAK_T0jDH1l__Fq5Z8h7yQNYYn-Ay_03nIxPGv1u07RMmAbXUpIVF_Ln3tLNWU6ubYVK38bQp7y0yqwzf7Aemayq-qTtvZ23CZa_tNFZ_dgm9cQNVp5GIh2DH0RIhP8.aWloAIDHC-ypL0cel99ReettaoMJlPN8DjL405cRJH8&dib_tag=se&keywords=foikin+aquarium+atx+black&qid=1768690112&s=electronics&sprefix=foikin+quarium+atx+black%2Celectronics%2C246&sr=1-4'}
+        'default_case': {'name': 'Lian Li Lancool 216 RGB TG (6 ventilos)', 'price': 110, 'url': 'https://www.amazon.fr/dp/B0B469JRGC'}
     },
     'monitor': {
         'aoc24': {'name': 'AOC 24G2U 24" 144Hz IPS', 'price': 154, 'url': 'https://www.electrodepot.fr/moniteur-aoc-27-q27g42ze-qhd-240hz-0-3ms.html'},
@@ -83,7 +85,12 @@ def build_pc(budget):
     config.append({'type': 'CPU', **cpu})
     remaining -= cpu['price']
     
-    # 2. Carte mère
+    # 2. Water Cooling
+    cooling = PRODUCTS['cooling']['watercooling']
+    config.append({'type': 'Refroidissement', **cooling})
+    remaining -= cooling['price']
+    
+    # 3. Carte mère
     mobo = PRODUCTS['mobo'][mobo_key]
     config.append({'type': 'Carte mère', **mobo})
     remaining -= mobo['price']
@@ -93,7 +100,7 @@ def build_pc(budget):
     config.append({'type': 'RAM', **ram})
     remaining -= ram['price']
     
-    # 4. GPU
+    # 5. GPU
     max_gpu_price_for_budget = 800 if budget < 3000 else float('inf')
     available_gpus = [(k, v) for k, v in PRODUCTS['gpu'].items() if v['price'] <= max_gpu_price_for_budget]
     available_gpus.sort(key=lambda x: x[1]['price'], reverse=True)
@@ -109,17 +116,12 @@ def build_pc(budget):
     config.append({'type': 'GPU', **gpu})
     remaining -= gpu['price']
     
-    # 5. Stockage
-    if remaining < 1:
-        ssd_key = 'kingston500'
-    else:
-        ssd_key = 'samsung1tb'
-    
-    ssd = PRODUCTS['ssd'][ssd_key]
+    # 6. Stockage (toujours 1 To minimum)
+    ssd = PRODUCTS['ssd']['samsung1tb']
     config.append({'type': 'Stockage', **ssd})
     remaining -= ssd['price']
     
-    # 6. Alimentation
+    # 7. Alimentation
     total_tdp = 150 + 220
     if total_tdp > 500 or gpu['price'] > 700:
         psu = PRODUCTS['psu']['rm850']
